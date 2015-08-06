@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using LumiSoft.Net.Mime.vCard;
 
 namespace ContactConvert

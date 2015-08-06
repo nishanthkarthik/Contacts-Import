@@ -6,8 +6,8 @@ namespace ContactConvert
 {
     class ContactCard
     {
-        public string ContactName { get; set; }
-        public string MobileNo { get; set; }
+        public string ContactName { get; private set; }
+        public string MobileNo { get; private set; }
 
         public static List<ContactCard> ReadCsv(string fileName)
         {
@@ -17,16 +17,13 @@ namespace ContactConvert
                 while (!streamReader.EndOfStream)
                 {
                     var readLine = streamReader.ReadLine();
-                    if (readLine != null)
-                    {
-                        var strings = readLine.Split(',');
-                        if (strings.Length > 1)
-                            contactCards.Add(new ContactCard()
-                            {
-                                ContactName = strings.ElementAt(0),
-                                MobileNo = strings.ElementAt(1)
-                            });
-                    }
+                    var strings = readLine?.Split(',');
+                    if (strings?.Length > 1)
+                        contactCards.Add(new ContactCard()
+                        {
+                            ContactName = strings.ElementAt(0),
+                            MobileNo = strings.ElementAt(1)
+                        });
                 }
             }
             return contactCards;
